@@ -19,7 +19,7 @@ Plugin 'L9'
 " Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///home/gmarik/path/to/plugin'
+"Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -30,7 +30,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'bling/vim-airline'
-
+Plugin 'jistr/vim-nerdtree-tabs'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -52,9 +52,13 @@ filetype plugin indent on    " required
 syntax enable
 
 "solarized colours
+set term=xterm-256color
 set background=dark
-let g:solarized_termcolours=256
+set t_Co=256
+"let g:solarized_termcolours=16
 colorscheme solarized
+highlight Normal ctermbg=NONE
+highlight nonText ctermbg=NONE
 
 "line numbering / lighting
 set relativenumber
@@ -109,4 +113,13 @@ let g:syntastic_check_on_wq = 0
 
 " vim airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'dark'
+let g:airline_theme = 'solarized'
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+" Enable folding with the spacebar
+nnoremap <space> za
+
+" nerdtree tabs on startup
+let g:nerdtree_tabs_open_on_console_startup=1
